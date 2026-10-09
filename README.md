@@ -66,7 +66,7 @@ Mostrami le informazioni della mia azienda su Fatture in Cloud
 
 Se vedi i dati della tua azienda, è tutto configurato.
 
-## Cosa puoi fare (60 tool)
+## Cosa puoi fare (62 tool)
 
 ### Clienti e fornitori
 - "Cerca il cliente Rossi"
@@ -97,6 +97,10 @@ Se vedi i dati della tua azienda, è tutto configurato.
 - "Lista i corrispettivi"
 - "Mostrami gli F24"
 
+### Documenti in attesa
+- "Mostrami le spese da registrare arrivate via email"
+- "Dammi il dettaglio del documento in attesa 123"
+
 ### Info di sistema
 - "Quali tipi IVA ho configurati?"
 - "Lista le valute disponibili"
@@ -114,6 +118,7 @@ Se vedi i dati della tua azienda, è tutto configurato.
 | E-fattura | 4 | `send_einvoice`, `verify_einvoice_xml`, `get_einvoice_xml`, `get_einvoice_rejection_reason` |
 | Email | 3 | `get_document_email_data`, `send_document_email`, `list_emails` |
 | Doc. ricevuti | 4 | `list_received_documents`, `get_received_document`, `create_received_document`, `delete_received_document` |
+| Doc. in attesa | 2 | `list_pending_received_documents`, `get_pending_received_document` |
 | Prima nota | 3 | `list_cashbook`, `create_cashbook_entry`, `delete_cashbook_entry` |
 | Archivio | 4 | `list_archive`, `get_archive_document`, `create_archive_document`, `delete_archive_document` |
 | F24 | 3 | `list_taxes`, `get_tax`, `delete_tax` |

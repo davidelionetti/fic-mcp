@@ -614,6 +614,54 @@ def delete_received_document(document_id: int) -> dict:
 
 
 # ============================================================
+# PENDING RECEIVED DOCUMENTS (spese da registrare)
+# ============================================================
+
+
+@mcp.tool(tags={"received", "documents", "pending"})
+def list_pending_received_documents(
+    pending_type: str = "mail",
+    page: Optional[int] = None,
+    per_page: Optional[int] = None,
+    q: Optional[str] = None,
+    sort: Optional[str] = None,
+    fieldset: Optional[str] = None,
+) -> dict:
+    """Lista i documenti ricevuti in attesa di registrazione (spese da registrare).
+
+    Args:
+        pending_type: Origine del documento in attesa. Valori: mail, browser, agyo
+        page: Numero pagina
+        per_page: Risultati per pagina
+        q: Testo di ricerca
+        sort: Campo di ordinamento (es. 'date', '-date' per decrescente)
+        fieldset: Set di campi da restituire. Valori: basic, detailed
+    """
+    cid = _get_company_id()
+    return _api("GET", f"/c/{cid}/received_documents/pending", params={
+        "type": pending_type, "page": page, "per_page": per_page,
+        "q": q, "sort": sort, "fieldset": fieldset
+    })
+
+
+@mcp.tool(tags={"received", "documents", "pending"})
+def get_pending_received_document(
+    document_id: int,
+    fieldset: Optional[str] = None,
+) -> dict:
+    """Ottieni il dettaglio di un documento ricevuto in attesa di registrazione
+    (fornitore, importi, date, pagamenti, link temporaneo all'allegato).
+
+    Args:
+        document_id: ID del documento in attesa
+        fieldset: Set di campi da restituire. Valori: basic, detailed
+    """
+    cid = _get_company_id()
+    return _api("GET", f"/c/{cid}/received_documents/pending/{document_id}",
+                params={"fieldset": fieldset})
+
+
+# ============================================================
 # CASHBOOK (Prima Nota)
 # ============================================================
 
